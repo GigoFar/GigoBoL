@@ -3,7 +3,8 @@ local autoUpdate = true
 local SilentPrint = false 
 
 if myHero.charName ~= "Graves" then return end
---[[Credits to Hellsing, QQQ and Honda7]]--
+
+--[[Credits to Hellsing, QQQ and Honda7]]--  J'ai coulu ajouter un autoupdate qui ne semble pas forcement marcher xD
 
 local host = "raw.github.com"
 local path = "/GigoFar/GigoBoL/master/Scripts/Graves.lua".."?rand="..math.random(1,10000)
@@ -57,20 +58,22 @@ for DOWNLOAD_LIB_NAME, DOWNLOAD_LIB_URL in pairs(REQUIRED_LIBS) do
 	end
 end 
 if DOWNLOADING_LIBS then return end
---[[End of Credits]]-- 
 
+-- Some values --
 local Graves = {
 	Q = {range = 900, speed = 0.902, delay = 250, collision = false},
 	W = {range = 950, speed = 1.650, delay = 250, collision = false},
 	R = {range = 1000, speed = 1.4, delay = 250, radius = 210, collision = true}
 }
 
+-- Si j'ai bien compris c'est ici que tout commence réellement --
+
 function OnLoad()
 	wayPointManager = WayPointManager()
 	VP = VPrediction(true)
-	Recall = false
-	Tick = GetTickCount()
-	if _G.MMA_Loaded ~= nil then
+	Recall = false 
+	Tick = GetTickCount()  -- C'est quoi le TickCount ?-- 
+	if _G.MMA_Loaded ~= nil then -- j'ai voulu ajouter MMA et SAC je ne saispas si c'est bien ?
 		PrintChat("<font color = \"#00FF00\">Grave MMA Status:</font> <font color = \"#fff8e7\"> Loaded</font>")
 		isMMA = true
 	elseif _G.AutoCarry ~= nil then
@@ -121,7 +124,7 @@ function OnLoad()
 	ts.name = "Graves Target"
 	Menu:addTS(ts)
 	printMessage("Script Loaded")
-	if not _G.SOWLoaded then
+	if not _G.SOWLoaded then  -- Je ne sais pas si je dois l'ajouter ici ... J'ai vraiment envie de faire un truc clean --
 		SOWi = SOW(VP)
 		SMenu = scriptConfig("Simple Orbwalker", "Simple Orbwalker")
 		SMenu:addSubMenu("Drawing", "Drawing")
@@ -131,7 +134,7 @@ function OnLoad()
 	end
 end
 
-function GetCustomTarget()
+function GetCustomTarget() -- Est ce que cette ligne va intergrer MMA et SAC ? -- 
 	ts:update()
 	if _G.MMA_Target and _G.MMA_Target.type == myHero.type then return _G.MMA_Target end
 	if _G.AutoCarry and _G.AutoCarry.Crosshair and _G.AutoCarry.Attack_Crosshair and _G.AutoCarry.Attack_Crosshair.target and _G.AutoCarry.Attack_Crosshair.target.type == myHero.type then return _G.AutoCarry.Attack_Crosshair.target end
@@ -146,6 +149,8 @@ function OnTick()
 	WREADY = (myHero:CanUseSpell(_W) ~= COOLDOWN or myHero:CanUseSpell(_W) == READY)
 	RREADY = (myHero:CanUseSpell(_R) ~= COOLDOWN or myHero:CanUseSpell(_R) == READY)
 	end
+	
+	-- Je pense qu'il soit y avoir un souci par ici --
 	
 	if Target then
 		if Menu.General.Combo then
@@ -177,9 +182,9 @@ function OnTick()
 			end
 		end
 	end
-end
+end  -- en jeu il me dit qu'il manque un truc en eof (ou je ne sais plus quoi) à cet endroit là
 
-function KS(Target)
+function KS(Target)  -- J'ai joouter un truc pour ks mais je ne sais pas si c'est correct --
 	if QREADY and getDmg("Q", Target, myHero) > Target.health then
 		local CastPos = VP:GetLineCastPosition(Target, Qdelay, Qwidth, Qrange, Qspeed, myHero, false)
 		if GetDistance(Target) <= Qrange and QREADY then
@@ -193,6 +198,8 @@ function KS(Target)
 		end
 	end
 end
+
+-- A  quoi correspond cette fonction ? --
 
 function OnGainBuff(unit, buff)
 	if unit.isMe and buff.name:lower():find("recall") then
