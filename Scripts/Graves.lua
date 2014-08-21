@@ -5,7 +5,7 @@ local SilentPrint = false
 if not VIP_USER or myHero.charName ~= "Graves" then return end
 --[[Credits to Hellsing, QQQ and Honda7]]--
 
-local host = "github.com"
+local host = "raw.github.com"
 local path = "/GigoFar/GigoBoL/master/Scripts/Graves.lua".."?rand="..math.random(1,10000)
 local url  = "https://"..host..path
 local printMessage = function(message) if not SilentPrint then print("<font color=\"#6699ff\"><b>Graves:</b></font> <font color=\"#FFFFFF\">" .. message .. "</font>") end end
