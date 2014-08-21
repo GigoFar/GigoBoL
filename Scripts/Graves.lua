@@ -157,13 +157,13 @@ function OnTick()
 			end
 			if Menu.Combo.W and WREADY then
 				local CastPosition, HitChance, Position = VP:GetLineCastPosition(Target,Grave.W["delay"],Graves.W["width"],Graves.W["range"],Graves.W["speed"],myHero)
-				if GetDistance(myHero,CastPosition) <= Graves.W["range"] and HitChance >= Menu.HC.W then
+				if GetDistance(myHero,CastPosition) <= Graves.W["range"] and WREADY and HitChance >= Menu.HC.W then
 						CastSpell(_W,CastPosition.x,CastPosition.z)
 				end
 			end
 			if Menu.Combo.R and RREADY then
 				local CastPosition, HitChance, Position = VP:GetLineCastPosition(Target,Grave.R["delay"],Graves.R["width"],Graves.R["range"],Graves.R["speed"],myHero)
-				if GetDistance(myHero,CastPosition) <= Graves.R["range"] and HitChance >= Menu.HC.R then
+				if GetDistance(myHero,CastPosition) <= Graves.R["range"] and RREADY and HitChance >= Menu.HC.R then
 						CastSpell(_R,CastPosition.x,CastPosition.z)
 				end
 			end
@@ -171,7 +171,8 @@ function OnTick()
 		if Menu.General.Harass then
 			if Menu.Combo.Q and QREADY then
 				local CastPosition, HitChance, Position = VP:GetLineCastPosition(Target,Grave.Q["delay"],Graves.Q["width"],Graves.Q["range"],Graves.Q["speed"],myHero)
-				if GetDistance(myHero,CastPosition) <= Graves.Q["range"] and HitChance >= Menu.HC.Q 
+				if GetDistance(myHero,CastPosition) <= Graves.Q["range"] and QREADY and HitChance >= Menu.HC.Q then
+						CastSpell(_Q,CastPosition.x,CastPosition.z) 
 				end
 			end
 		end
