@@ -139,6 +139,7 @@ function GetCustomTarget()
 end
 
 function OnTick()
+	if MenuLoad ~= true then return end
 	ts:update()
 	Target = ts.target
 	QREADY = (myHero:CanUseSpell(_Q) ~= COOLDOWN or myHero:CanUseSpell(_Q) == READY)
@@ -160,7 +161,7 @@ function OnTick()
 			end
 			if Menu.Combo.R and RREADY then
 				local CastPosition, HitChance, Position = VP:GetLineCastPosition(Target,Grave.R["delay"],Graves.R["width"],Graves.R["range"],Graves.R["speed"],myHero)
-				if GetDistance(myHero,CastPosition) <= Graves.W["range"] and HitChance >= Menu.HC.W 
+				if GetDistance(myHero,CastPosition) <= Graves.R["range"] and HitChance >= Menu.HC.R 
 				end
 			end
 		end
