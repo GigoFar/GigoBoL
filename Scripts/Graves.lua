@@ -2,7 +2,7 @@ local version = 0.1
 local autoUpdate = true
 local SilentPrint = false 
 
-if not VIP_USER or myHero.charName ~= "Graves" then return end
+if myHero.charName ~= "Graves" then return end
 --[[Credits to Hellsing, QQQ and Honda7]]--
 
 local host = "raw.github.com"
