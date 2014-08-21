@@ -5,8 +5,8 @@ local SilentPrint = false
 
 --[[Credits to Hellsing, QQQ and Honda7]]--
 
-local host = "bitbucket.org"
-local path = "/BoLPain/bol-studio/raw/master/Scripts/Tryndamere.lua".."?rand="..math.random(1,10000)
+local host = "https://github.com/"
+local path = "/GigoFar/GigoBoL/master/Scripts/Graves.lua".."?rand="..math.random(1,10000)
 local url  = "https://"..host..path
 local printMessage = function(message) if not SilentPrint then print("<font color=\"#6699ff\"><b>Graves:</b></font> <font color=\"#FFFFFF\">" .. message .. "</font>") end end
 local webResult = GetWebResult(host, path)
