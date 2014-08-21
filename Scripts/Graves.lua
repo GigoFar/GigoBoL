@@ -151,7 +151,7 @@ function OnTick()
 		if Menu.General.Combo then
 			if Menu.Combo.Q and QREADY then
 				local CastPosition, HitChance, Position = VP:GetLineCastPosition(Target,Grave.Q["delay"],Graves.Q["width"],Graves.Q["range"],Graves.Q["speed"],myHero)
-				if GetDistance(myHero,CastPosition) <= Graves.Q["range"] and HitChance >= Menu.HC.Q then
+				if GetDistance(myHero,CastPosition) <= Graves.Q["range"] and QREADY and HitChance >= Menu.HC.Q then
 						CastSpell(_Q,CastPosition.x,CastPosition.z) 
 				end
 			end
