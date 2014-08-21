@@ -62,7 +62,6 @@ if DOWNLOADING_LIBS then return end
 local Graves = {
 	Q = {range = 900, speed = .902, delay = 250, collision = false},
 	W = {range = 950, speed = 1.650, delay = 250, collision = false},
-	E = 
 	R = {range = 1000, speed = 1.4, delay = 250, radius = 210, collision = true}
 }
 
